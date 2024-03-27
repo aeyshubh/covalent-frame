@@ -79,7 +79,7 @@ app.frame('/submit', async (c) => {
   let latest_transaction_hash
   if (buttonValue === "eth") {
     console.log("ETH")
-    const resp = await client.TransactionService.getTransactionSummary("eth-mainnet", "0xaB8a67743325347Aa53bCC66850f8F13df87e3AF", { "quoteCurrency": "USD" });
+    const resp = await client.TransactionService.getTransactionSummary("eth-mainnet",`${c.inputText}`, { "quoteCurrency": "USD" });
     total_count = resp.data.items[0].total_count;
     earliest_trnasaction = (resp.data.items[0].earliest_transaction.block_signed_at).toDateString();
     earliest_trnasaction_hash = "https://etherscan.io/tx/" + resp.data.items[0].earliest_transaction.tx_hash;
@@ -88,7 +88,7 @@ app.frame('/submit', async (c) => {
     latest_transaction_hash = "https://etherscan.io/tx/" + resp.data.items[0].latest_transaction.tx_hash;
   } else if (buttonValue === "op") {
     console.log("OP")
-    const resp = await client.TransactionService.getTransactionSummary("optimism-mainnet", "0xaB8a67743325347Aa53bCC66850f8F13df87e3AF", { "quoteCurrency": "USD" });
+    const resp = await client.TransactionService.getTransactionSummary("optimism-mainnet",`${c.inputText}`, { "quoteCurrency": "USD" });
     total_count = resp.data.items[0].total_count;
     earliest_trnasaction = (resp.data.items[0].earliest_transaction.block_signed_at).toDateString();
     earliest_trnasaction_hash = "https://optimistic.etherscan.io/tx/" + resp.data.items[0].earliest_transaction.tx_hash;
@@ -97,7 +97,7 @@ app.frame('/submit', async (c) => {
     latest_transaction_hash = "https://optimistic.etherscan.io/tx/" + resp.data.items[0].latest_transaction.tx_hash;
     }else if (buttonValue === "base") {
     console.log("base")
-    const resp = await client.TransactionService.getTransactionSummary("base-mainnet", "0xaB8a67743325347Aa53bCC66850f8F13df87e3AF", { "quoteCurrency": "USD" });
+    const resp = await client.TransactionService.getTransactionSummary("base-mainnet",`${c.inputText}`, { "quoteCurrency": "USD" });
     total_count = resp.data.items[0].total_count;
     earliest_trnasaction = (resp.data.items[0].earliest_transaction.block_signed_at).toDateString();
     earliest_trnasaction_hash = "https://basescan.org/tx/" + resp.data.items[0].earliest_transaction.tx_hash;
