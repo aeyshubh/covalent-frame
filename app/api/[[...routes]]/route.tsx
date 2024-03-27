@@ -11,7 +11,6 @@ import { serveStatic } from 'frog/serve-static'
 const app = new Frog({
   assetsPath: '/',
   basePath: '/api',
-  // Supply a Hub to enable frame verification.
    hub: neynar({ apiKey:`${process.env.NEYNAR_API_KEY}`})
 })
 
