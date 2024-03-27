@@ -74,9 +74,9 @@ app.frame('/submit', async (c) => {
   //can do for eth pol base OP
   let total_count
   let earliest_trnasaction
-  let earliest_trnasaction_hash
+  let earliest_trnasaction_hash='';
   let latest_transaction
-  let latest_transaction_hash
+  let latest_transaction_hash='';
   if (buttonValue === "eth") {
     console.log("ETH")
     const resp = await client.TransactionService.getTransactionSummary("eth-mainnet",`${c.inputText}`, { "quoteCurrency": "USD" });
@@ -95,7 +95,7 @@ app.frame('/submit', async (c) => {
 
     latest_transaction = (resp.data.items[0].latest_transaction.block_signed_at).toDateString();
     latest_transaction_hash = "https://optimistic.etherscan.io/tx/" + resp.data.items[0].latest_transaction.tx_hash;
-    }else if (buttonValue === "base") {
+  }else if (buttonValue === "base") {
     console.log("base")
     const resp = await client.TransactionService.getTransactionSummary("base-mainnet",`${c.inputText}`, { "quoteCurrency": "USD" });
     total_count = resp.data.items[0].total_count;
@@ -106,7 +106,6 @@ app.frame('/submit', async (c) => {
     latest_transaction_hash = "https://basescan.org/tx/" + resp.data.items[0].latest_transaction.tx_hash;
   }
   return c.res({
-    action: '/',
     image: (
       <div
         style={{
@@ -170,10 +169,10 @@ app.frame('/submit', async (c) => {
     ),
 
     intents: [
-      <Button.Redirect
-        location={earliest_trnasaction_hash as any}>Earliest Tx</Button.Redirect>,
-      <Button.Redirect
-        location={latest_transaction_hash as any}>Recent Tx</Button.Redirect>,
+      <Button.Link
+        href={earliest_trnasaction_hash as string}>Earliest Tx</Button.Link>,
+      <Button.Link
+        href={latest_transaction_hash as string}>Recent Tx</Button.Link>,
         <Button.Reset>Go Back</Button.Reset>,
     ]
   })
