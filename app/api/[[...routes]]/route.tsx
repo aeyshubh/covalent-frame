@@ -70,7 +70,7 @@ app.frame('/', (c) => {
 
 app.frame('/submit', async (c) => {
   const { buttonValue } = c
-  const client = new CovalentClient(`${process.env.COVALENT_API_KEY}`);
+  const client = new CovalentClient(`${process.env.COVALENT_KEY}`);
   //can do for eth pol base OP
   let total_count
   let earliest_trnasaction
