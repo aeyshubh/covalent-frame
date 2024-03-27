@@ -4,14 +4,12 @@ import { Button, Frog, TextInput } from 'frog'
 import { devtools } from 'frog/dev'
 import { CovalentClient } from "@covalenthq/client-sdk";
 import { NeynarAPIClient } from "@neynar/nodejs-sdk";
- import { neynar } from 'frog/hubs'
 import { handle } from 'frog/next'
 import { serveStatic } from 'frog/serve-static'
 
 const app = new Frog({
   assetsPath: '/',
   basePath: '/api',
-   hub: neynar({ apiKey:`${process.env.NEYNAR_API_KEY}`})
 })
 
 // Uncomment to use Edge Runtime
@@ -26,10 +24,7 @@ app.frame('/', (c) => {
       <div
         style={{
           alignItems: 'center',
-          background:
-            status === 'response'
-              ? 'linear-gradient(to right, #432889, #17101F)'
-              : 'black',
+          background:'hsla(265, 53%, 29%, 1)',
           backgroundSize: '100% 100%',
           display: 'flex',
           flexDirection: 'column',
@@ -42,7 +37,7 @@ app.frame('/', (c) => {
       >
         <div
           style={{
-            color: 'white',
+            color: '#e36414 ',
             fontSize: 60,
             fontStyle: 'normal',
             letterSpacing: '-0.025em',
@@ -51,10 +46,7 @@ app.frame('/', (c) => {
             padding: '0 120px',
             whiteSpace: 'pre-wrap',
           }}
-        >
-          {status === 'response'
-            ? `Nice choice.${fruit ? ` ${fruit.toUpperCase()}!!` : ''}`
-            : 'Welcome!'}
+        > Do you remember your first transaction anon 👀 ? Find it here ⬇️
         </div>
       </div>
     ),
@@ -111,7 +103,7 @@ app.frame('/submit', async (c) => {
         style={{
           alignItems: 'center',
           background:
-            'linear-gradient(to right, #432889, #17101F)',
+            'hsla(265, 53%, 29%, 1)',
           backgroundSize: '100% 100%',
           display: 'flex',
           flexDirection: 'column',
@@ -124,7 +116,7 @@ app.frame('/submit', async (c) => {
       >
         <span
           style={{
-            color: '#faa307',
+            color: '#e36414',
             fontSize: 60,
             fontStyle: 'italic',
             letterSpacing: '-0.025em',
@@ -152,7 +144,7 @@ app.frame('/submit', async (c) => {
         style={{
           alignItems: 'center',
           background:
-            'linear-gradient(to right, #432889, #17101F)',
+            'hsla(265, 53%, 29%, 1)',
           backgroundSize: '100% 100%',
           display: 'flex',
           flexDirection: 'column',
@@ -165,7 +157,7 @@ app.frame('/submit', async (c) => {
       >
                <span
                style={{
-                 color: '#f77f00',
+                 color: '#e36414',
                  fontSize: 60,
                  fontStyle: 'normal',
                  letterSpacing: '-0.025em',
@@ -240,7 +232,7 @@ app.frame('/submit', async (c) => {
         style={{
           alignItems: 'center',
           background:
-            'linear-gradient(to right, #432889, #17101F)',
+            'hsla(265, 53%, 29%, 1)',
           backgroundSize: '100% 100%',
           display: 'flex',
           flexDirection: 'column',
@@ -251,24 +243,6 @@ app.frame('/submit', async (c) => {
           width: '100%',
         }}
       >
-{/*         if(user.result.user.displayName !== null){
-               <span
-               style={{
-                 color: '#f77f00',
-                 fontSize: 60,
-                 fontStyle: 'normal',
-                 letterSpacing: '-0.025em',
-                 lineHeight: 1.4,
-                 marginTop: 30,
-                 padding: '0 120px',
-                 whiteSpace: 'pre-wrap',
-               }}
-             >
-               {user.result.user.displayName}'s stats
-             </span>
-        } */}
-
-
         <span
           style={{
             color: 'white',
@@ -330,7 +304,7 @@ app.frame('/submit', async (c) => {
         style={{
           alignItems: 'center',
           background:
-            'linear-gradient(to right, #432889, #17101F)',
+            'hsla(265, 53%, 29%, 1)',
           backgroundSize: '100% 100%',
           display: 'flex',
           flexDirection: 'column',
@@ -343,7 +317,7 @@ app.frame('/submit', async (c) => {
       >
         <span
           style={{
-            color: 'white',
+            color: '#e36414',
             fontSize: 60,
             fontStyle: 'normal',
             letterSpacing: '-0.025em',
